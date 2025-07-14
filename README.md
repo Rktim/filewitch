@@ -3,7 +3,7 @@
 **FileWitch** is a versatile Python command-line tool that empowers you to convert files between various formats effortlessly. Whether you're dealing with CSV, Excel, Word, PDF, or plain text files, FileWitch has got you covered.
 
 ---
-![PyPI - Downloads](https://img.shields.io/pypi/dm/filewitch)
+![Downloads](https://static.pepy.tech/personalized-badge/filewitch?period=total&units=international_system&left_color=grey&right_color=blue)
 
 ---
 ## ✨ Features
