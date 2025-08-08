@@ -20,6 +20,7 @@ from .convert import (
 )
 from .merge import merge_files
 
+
 def get_extension(filename: str) -> str:
     """Get file extension without the dot."""
     return Path(filename).suffix[1:].lower()
@@ -95,10 +96,12 @@ def convert(input_file: str, target_format: str) -> bool:
         click.echo(f"❌ Unexpected error: {str(e)}", err=True)
         return False
 
+
 @click.group()
 def cli():
-    """FileWitch - Convert and merge files between different formats."""
+    """FileWitch - Convert or merge files between different formats."""
     pass
+
 
 @cli.command(name='convert')
 @click.argument('input_file', type=click.Path(exists=True))
@@ -108,17 +111,22 @@ def convert_command(input_file: str, target_format: str):
     if not convert(input_file, target_format):
         sys.exit(1)
 
+
 @cli.command(name='merge')
 @click.argument('output_file', type=click.Path())
 @click.argument('input_files', nargs=-1, type=click.Path(exists=True))
-def merge_command(output_file: str, input_files):
+def merge_command(output_file: str, input_files: list):
     """Merge multiple files into one."""
+    if not input_files or len(input_files) < 2:
+        click.echo("❌ Please provide at least two input files to merge.", err=True)
+        sys.exit(1)
     try:
         merge_files(output_file, *input_files)
-        click.echo(f"✅ Successfully merged into: {output_file}")
+        click.echo(f"✅ Successfully merged files into: {output_file}")
     except Exception as e:
         click.echo(f"❌ Error during merging: {str(e)}", err=True)
         sys.exit(1)
+
 
 def main():
     """Main entry point for the CLI."""

@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="filewitch",
-    version="0.2.1",
+    version="0.3.0",
     author="Raktim Kalita",
     author_email="raktimkalita.ai@gmail.com",
-    description="A Python library for converting files between different formats",
+    description="A Python library for converting and merging files between different formats",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Rktim/filewitch",
@@ -35,7 +35,8 @@ setup(
         "python-pptx>=0.6.21",
         "reportlab>=4.0.4",
         "Pillow>=10.0.0",
-        "docx2pdf>=0.1.8"
+        "docx2pdf>=0.1.8",
+        "PyPDF2>=3.0.0"
     ],
     entry_points={
         "console_scripts": [

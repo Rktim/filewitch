@@ -1,0 +1,39 @@
+# This workflow will build and publish a Python distribution to PyPI when a release is created.
+
+name: Publish Python Package to PyPI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      # This step checks out a copy of your repository.
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+      # This step sets up a Python environment for the job.
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build
+      # This step installs the necessary tools: pip and the modern 'build' package.
+
+    - name: Build package
+      run: python -m build
+      # This step runs the build command to create the sdist and wheel files.
+
+    - name: Publish package to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
+      # This is the key step that securely uploads your package to PyPI.
+      # It uses a secret token that you will configure in your repository settings.
