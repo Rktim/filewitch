@@ -14,14 +14,7 @@ from .convert import (
     ConversionError
 )
 
-from .merge import (
-    merge_files,
-    merge_pdfs,
-    merge_csvs,
-    merge_excels,
-    merge_txts,
-    merge_docxs
-)
+from .merge import *
 
 __version__ = "0.3.0"
 __all__ = [
