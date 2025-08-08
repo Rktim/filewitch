@@ -18,7 +18,7 @@ from .convert import (
     copy_file,
     ConversionError
 )
-from .merge import merge_files
+
 
 
 def get_extension(filename: str) -> str:
